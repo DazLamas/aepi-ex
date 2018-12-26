@@ -1,3 +1,9 @@
+if (!opener) {
+
+    alert("ERROR: Accede desde el panel principal.");
+    location.assign('../index.html');
+};
+
 (function(window, document, opener){
 
   const buttons = document.getElementsByClassName('js-contest-options');
@@ -11,7 +17,7 @@
   console.log('winner: ', winner);
   console.log('looser: ', looser);
 
-  winner.addEventListener('click', function() {
+  winner.addEventListener('click', () => {
 
     opener.objPartida.saldo += 10000;
     opener.msg('success', 'Premio!! Has ganado 10000€');
@@ -19,7 +25,7 @@
 
   });
 
-  looser.addEventListener('click', function() {
+  looser.addEventListener('click', () => {
 
     const parques = opener.objPartida.parque;
 

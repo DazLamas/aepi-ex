@@ -9,22 +9,22 @@
 
 	<body>
 
-		<div class="controles">		
+		<div class="controles">
 
 			<section>
 				<img src="img/logo.png" alt="Logo">
-			</section>				
+			</section>
 
 			<section>
 				<p>¡Bienvenid@, <span id="nombreUsuario">invitado</span>!</p>
 				<p>Partida creada el <span id="fechaPartida">-</span></p>
-				<button id="nuevaPartida">Nueva partida</button>
+				<button id="nuevaPartida" class="js-check-game-status">Nueva partida</button>
 			</section>
 
 			<section>
 				<img src="img/caja.png" alt="caja">
 				<p id="contadorSaldoActual">0 $</p>
-				<button id="recaudarCaja">Recaudar entradas</button>
+				<button id="recaudarCaja" class="js-check-game-status">Recaudar entradas</button>
 			</section>
 
 			<section>
@@ -77,14 +77,15 @@
 			<div></div>
 			<div></div>
 			<div></div>
-		</div>		
+		</div>
 
 		<div id="alerta"></div>
 
-		<button id="nuevoSorteo">Nuevo sorteo</button>
-				
+		<button id="nuevoSorteo" class="js-game-trigger">Nuevo sorteo</button>
+
 		<script src="js/comun.js"></script>
-		<script src="js/panelGeneral.js"></script>	
+		<script src="js/panelGeneral.js"></script>
+		<script src="js/info-updating.js"></script>
 
 	</body>
 
