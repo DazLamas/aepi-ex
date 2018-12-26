@@ -23,3 +23,20 @@ function generateRandomNumber(min_value , max_value) {
 function randomElementInArray(array) {
     return array[generateRandomNumber(0, array.length)];
 };
+
+// function raffleTimeStamp() {
+//
+//   var startTime = new Date();
+//   var endTime;
+//
+//   function end() {
+//   endTime = new Date();
+//   var timeDiff = endTime - startTime; //in ms
+//   // strip the ms
+//   timeDiff /= 1000;
+//
+//   // get seconds
+//   var seconds = Math.round(timeDiff);
+//   console.log(seconds + " seconds");
+//
+// }

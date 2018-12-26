@@ -1,4 +1,11 @@
+if (!opener || opener.objPartida.raffleStatus != true) {
+    location.assign('../index.html');
+};
+
 (function(window, document, opener){
+
+  opener.document.getElementById('nuevoSorteo').disabled = true;
+  opener.raffleStatus = false;
 
   const buttons = document.getElementsByClassName('js-contest-options');
   const winner  = randomElementInArray(buttons);
@@ -31,6 +38,8 @@
     opener.msg('error', 'Ohhhhhh! Has periddo el sorteo... un terremoto acaba de destruir dos de tus edificios');
     window.close();
   });
+
+  setTimeout(opener.setRaffleAvailable, 3600000);//After 1 hour
 
 
 }(window, document, opener));

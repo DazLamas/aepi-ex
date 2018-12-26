@@ -3,6 +3,7 @@ var objPartida = {
     saldo: 3000,
     recaudacion: 0,
     visitantes: 0,
+    raffleStatus: true,
     parque: [],
 }, celdaItem;
 
@@ -83,7 +84,6 @@ nuevoSorteo.onclick = () => {
 
     if (objPartida.iniciada && objPartida.parque.length > 1) {
 
-        //llamar a función
         open("paneles/nuevosorteo.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
     }
@@ -134,5 +134,9 @@ setInterval( () => {
     document.getElementById('contadorSaldoActual').textContent = objPartida.saldo + " $";
 
 
-
 }, 1000);
+
+function setRaffleAvailable() {
+  document.getElementById('nuevoSorteo').disabled = false;
+  objPartida.raffleStatus = true;
+};
