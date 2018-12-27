@@ -1,52 +1,55 @@
-class Game {
-  iniciada    =  false;
-  saldo       =  3000;
-  recaudacion =  0;
-  visitantes  =  0;
-  parque      =  [];
+export class Game {
+  constructor() {
+    this.init       =  false;
+    this.balance    =  3000;
+    this.collection =  0;
+    this.visitors   =  0;
+    this.buildings  =  [];
+  };
 };
 
-export class Edificio {
-  constructor(celda, nombre, tipo) {
-    this._celda  = celda;
-    this._nombre = nombre;
-    this._tipo   = tipo;
+export class Building {
+  constructor(cell, name, type) {
+    this._cell  = cell;
+    this._name = name;
+    this._type   = type;
   };
 
-  inicializar() {
-    this._celda.dataset.edificioCelda = this._nombre;
+  create(game, building) {
+    this._cell.dataset.cellContent = this._name;
+    game.buildings.push(building);
   };
 
-  get tipo() {
-    return this._tipo;
+  get type() {
+    return this._type;
   };
 
-  get celda() {
-    return this._celda;
+  get cell() {
+    return this._cell;
   };
 
 };
 
-export class Atraccion extends Edificio {
-  constructor(celda, nombre, tipo, visitantes) {
-    super(celda, nombre, tipo)
-    this._visitantes = visitantes;
+export class Amusement extends Building {
+  constructor(cell, name, type, visitors) {
+    super(cell, name, type)
+    this._visitors = visitors;
   };
 
-  get visitantes() {
-    return Number(this._visitantes);
+  get visitors() {
+    return Number(this._visitors);
   }
 
 };
 
-export class Puesto extends Edificio {
-  constructor(celda, nombre, tipo, ingresos) {
-    super(celda, nombre, tipo)
-    this._ingresos = ingresos;
+export class Stand extends Building {
+  constructor(cell, name, type, income) {
+    super(cell, name, type)
+    this._income = income;
   };
 
-  get ingresos() {
-    return Number(this._ingresos);
+  get income() {
+    return Number(this._income);
   }
 
 };

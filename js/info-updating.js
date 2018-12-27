@@ -1,35 +1,37 @@
+function startGameStats() {
+
+  setInterval( () => {
+
+      // Actualización estadísticas panel
+      document.getElementById('buildings-counter').textContent = game.buildings.length + " edificios";
+
+      document.getElementById('entries-counter').textContent = game.collection + " $ en caja";
+
+  }, 100);
 
 
-setInterval( () => {
+  setInterval( () => {
 
-    // Actualización estadísticas panel
-    document.getElementById('contadorEdificios').textContent = objPartida.parque.length + " edificios";
+        for (building of game.buildings) {
 
-    document.getElementById('contadorRecaudacion').textContent = objPartida.recaudacion + " $ en caja";
+          if(building.type === 'amusement') {
+            game.visitors += building.visitors;
+            game.collection += (building.visitors * 0.5);
+          }
 
-}, 100);
+          if(building.type === 'stand' && game.visitors != 0) {
+            game.balance += building.income;
+          }
 
-
-setInterval( () => {
-
-      for (edificio of objPartida.parque) {
-
-        if(edificio.tipo === 'atraccion') {
-          objPartida.visitantes += edificio.visitantes;
-          objPartida.recaudacion += (edificio.visitantes * 0.5);
         }
 
-        if(edificio.tipo === 'puesto' && objPartida.visitantes != 0) {
-          objPartida.saldo += edificio.ingresos;
-        }
 
-      }
+      // Actualización de visitors y balance
+      document.getElementById('visitors-counter').textContent = game.visitors + " visitors";
 
-
-    // Actualización de visitantes y saldo
-    document.getElementById('contadorVisitantes').textContent = objPartida.visitantes + " visitantes";
-
-    document.getElementById('contadorSaldoActual').textContent = objPartida.saldo + " $";
+      document.getElementById('current-balance').textContent = game.balance + " $";
 
 
-}, 1000);
+  }, 1000);
+
+}

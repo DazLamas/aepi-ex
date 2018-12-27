@@ -9,64 +9,64 @@
 
 	<body>
 
-		<div class="controles">
+		<div class="game-main-panel">
 
 			<section>
 				<img src="img/logo.png" alt="Logo">
 			</section>
 
 			<section>
-				<p>¡Bienvenid@, <span id="nombreUsuario">invitado</span>!</p>
-				<p>Partida creada el <span id="fechaPartida">-</span></p>
-				<button id="nuevaPartida" class="js-check-game-status">Nueva partida</button>
+				<p>¡Bienvenid@, <span id="user-name">invitado</span>!</p>
+				<p>Partida creada el <span id="game-date">-</span></p>
+				<button id="new-game" class="js-check-game-status">Nueva partida</button>
 			</section>
 
 			<section>
 				<img src="img/caja.png" alt="caja">
-				<p id="contadorSaldoActual">0 $</p>
-				<button id="recaudarCaja" class="js-check-game-status">Recaudar entradas</button>
+				<p id="current-balance">3000 $</p>
+				<button id="tickets-gather" class="js-check-game-status">Recaudar entradas</button>
 			</section>
 
 			<section>
 				<h3>Stats</h3>
-				<p id="contadorEdificios">0 edificios</p>
-				<p id="contadorVisitantes">0 visitantes</p>
-				<p id="contadorRecaudacion">0$ en entradas</p>
+				<p id="buildings-counter">0 edificios</p>
+				<p id="visitors-counter">0 visitors</p>
+				<p id="entries-counter">0$ en entradas</p>
 			</section>
 
 		</div>
 
-		<div class="mapa">
+		<div class="game-map">
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="01"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="01"></div>
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="02"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="03"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="04"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="02"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="03"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="04"></div>
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="05"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="05"></div>
 			<div></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="06"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="07"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="06"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="07"></div>
 			<div></div>
 			<div></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="08"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="09"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="10"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="11"></div>
-			<div class="celda" data-edificio-celda="vacia" data-id-celda="12"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="08"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="09"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="10"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="11"></div>
+			<div class="cell" data-cell-content="empty" data-id-cell="12"></div>
 			<div></div>
 			<div></div>
 			<div></div>
@@ -79,13 +79,13 @@
 			<div></div>
 		</div>
 
-		<div id="alerta"></div>
+		<div id="alert"></div>
 
-		<button id="nuevoSorteo" class="js-game-trigger">Nuevo sorteo</button>
+		<button id="new-raffle" class="js-check-game-status">Nuevo sorteo</button>
 
-		<script src="js/comun.js"></script>
-		<script src="js/panelGeneral.js"></script>
-		<script src="js/info-updating.js"></script>
+		<script src="js/common.js"></script>
+		<script type="module" src="js/index.js"></script>
+		<script type="module" src="js/info-updating.js"></script>
 
 	</body>
 

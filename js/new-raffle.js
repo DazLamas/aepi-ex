@@ -19,7 +19,7 @@ if (!opener) {
 
   winner.addEventListener('click', () => {
 
-    opener.objPartida.saldo += 10000;
+    opener.game.balance += 10000;
     opener.msg('success', 'Premio!! Has ganado 10000€');
     window.close();
 
@@ -27,13 +27,13 @@ if (!opener) {
 
   looser.addEventListener('click', () => {
 
-    const parques = opener.objPartida.parque;
+    const buildingss = opener.game.buildings;
 
     for (var i = 0; i < 2; i++) {
-      parques[i].celda.dataset.edificioCelda = "vacia";
+      buildingss[i].cell.dataset.cellContent = "empty";
     }
 
-    parques.splice(0, 2);
+    buildingss.splice(0, 2);
     opener.msg('error', 'Ohhhhhh! Has periddo el sorteo... un terremoto acaba de destruir dos de tus edificios');
     window.close();
   });

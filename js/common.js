@@ -1,16 +1,16 @@
 function msg(arg1, arg2, arg3 = 3){
 
-    var alerta = document.getElementById('alerta');
+    var alert = document.getElementById('alert');
 
-    alerta.setAttribute('data-tipo', arg1);
+    alert.setAttribute('data-type', arg1);
 
-    alerta.textContent = arg2;
+    alert.textContent = arg2;
 
-    alerta.classList.add('activa');
+    alert.classList.add('activa');
 
     setTimeout(function(){
 
-        alerta.classList.remove('activa');
+        alert.classList.remove('activa');
 
     }, arg3 * 1000);
 
