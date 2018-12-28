@@ -3,11 +3,15 @@ var objPartida = {
     saldo: 3000,
     recaudacion: 0,
     visitantes: 0,
-    raffleStatus: true,
     parque: [],
 }, celdaItem;
 
+function disableRaffle(timeStampNow) {
 
+  document.getElementById('nuevoSorteo').disabled = true;
+  setTimeLapse(timeStampNow);
+
+};
 
 // Ejecución panel nueva partida
 nuevaPartida.onclick = () => {
@@ -22,7 +26,6 @@ nuevaPartida.onclick = () => {
 
     }
 }
-
 
 
 
@@ -72,26 +75,21 @@ recaudarCaja.onclick = () => {
     }
 }
 
-// Ejecución panel nuevo sorteo
-//
-// Al hacer click en botón:
-//
-// - Un numero es premiado
-// - Un numero es terremoto
-// - 3 numero nada
-
 nuevoSorteo.onclick = () => {
 
     if (objPartida.iniciada && objPartida.parque.length > 1) {
 
-        open("paneles/nuevosorteo.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
+        open("paneles/nuevoSorteo.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
     }
 
     else {
 
-      msg('error', 'Debes iniciar una partida y tener al menos dos edificios construidos para realizar el sorteo');
+      const errorText = !objPartida.iniciada ?
+                        'Inicia partida para poder acceder al Sorteo' :
+                        'Necesitas dos edificios construidos para acceder al sorteo';
 
+      msg('error', errorText);
 
     }
 }
@@ -135,8 +133,3 @@ setInterval( () => {
 
 
 }, 1000);
-
-function setRaffleAvailable() {
-  document.getElementById('nuevoSorteo').disabled = false;
-  objPartida.raffleStatus = true;
-};

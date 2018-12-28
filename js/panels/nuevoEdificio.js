@@ -50,8 +50,6 @@ class Puesto extends Edificio {
 };
 
 
-
-
 const buildings = document.getElementsByClassName('edificio');
 
 for (item of buildings) {

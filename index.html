@@ -9,11 +9,11 @@
 
 	<body>
 
-		<div class="controles">		
+		<div class="controles">
 
 			<section>
 				<img src="img/logo.png" alt="Logo">
-			</section>				
+			</section>
 
 			<section>
 				<p>¡Bienvenid@, <span id="nombreUsuario">invitado</span>!</p>
@@ -23,7 +23,7 @@
 
 			<section>
 				<img src="img/caja.png" alt="caja">
-				<p id="contadorSaldoActual">0 $</p>
+				<p id="contadorSaldoActual">3000 $</p>
 				<button id="recaudarCaja">Recaudar entradas</button>
 			</section>
 
@@ -32,6 +32,11 @@
 				<p id="contadorEdificios">0 edificios</p>
 				<p id="contadorVisitantes">0 visitantes</p>
 				<p id="contadorRecaudacion">0$ en entradas</p>
+			</section>
+
+			<section class="float-right">
+				<button id="nuevoSorteo">Nuevo sorteo</button>
+				<span id="countdown"></span>
 			</section>
 
 		</div>
@@ -77,14 +82,13 @@
 			<div></div>
 			<div></div>
 			<div></div>
-		</div>		
+		</div>
 
 		<div id="alerta"></div>
 
-		<button id="nuevoSorteo">Nuevo sorteo</button>
-				
-		<script src="js/comun.js"></script>
-		<script src="js/panelGeneral.js"></script>	
+		<script src="js/utils.js"></script>
+		<script src="js/countdown.js"></script>
+		<script src="js/index.js"></script>
 
 	</body>
 

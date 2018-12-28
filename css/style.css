@@ -77,7 +77,13 @@ p {
 .panelPrincipal .controles section:first-of-type {
   width: auto;
 }
-
+.panelPrincipal .controles section:last-child {
+  float: right;
+  border-left: none;
+  position: relative;
+  text-align: center;
+  line-height: 20px;
+}
 .panelPrincipal button, .panel a {
   display: block;
   float: none;
@@ -549,10 +555,12 @@ font-weight: 800
 }
 
 #nuevoSorteo {
-  position: fixed;
-  top: 10px;
-  right: 10px;
   width: 200px;
+}
+#countdown {
+  width: 200px;
+  margin-top: 20px;
+  display: block;
 }
 button:disabled {
   opacity: .5;
