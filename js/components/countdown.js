@@ -27,7 +27,7 @@ function countdown(deadline, output) {
 
 };
 
-function setTimeLapse(timeStampNow) {
+function setCountdownTimelapse(timeStampNow) {
 
 	const deadline = timeStampNow.setMinutes(timeStampNow.getMinutes() + 1);
 

@@ -131,7 +131,7 @@ function setRaffleStatus(status, timeStampNow) {
   document.getElementById("countdown").innerHTML = "";
 
   if(timeStampNow) {
-    setTimeLapse(timeStampNow);
+    setCountdownTimelapse(timeStampNow);
   };
 
 };
