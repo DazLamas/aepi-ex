@@ -1,10 +1,8 @@
 /*
  * Countdown
  */
-let deadline;
-const output 	 = document.getElementById("countdown");
 
-function countdown() {
+function countdown(deadline, output) {
 
 	let hours;
 	let minutes;
@@ -16,10 +14,7 @@ function countdown() {
 	if (lapse < 0) {
 
 		clearInterval(countdown);
-
-			document.getElementById('nuevoSorteo').disabled = false;
-			output.innerHTML = "";
-
+		setRaffleStatus(false, null);
 
 	} else {
 
@@ -27,20 +22,20 @@ function countdown() {
 		minutes = Math.floor((lapse % (1000 * 60 * 60)) / (1000 * 60));
 		seconds = Math.floor((lapse % (1000 * 60)) / 1000);
 
-		output.innerHTML = "Sorteo disponible en: <br>" + checkFormat(hours) + ":" + checkFormat(minutes) + ":" + checkFormat(seconds);
+		output.innerHTML = "Sorteo disponible en: <br>" + toClockFormat(hours) + ":" + toClockFormat(minutes) + ":" + toClockFormat(seconds);
 	}
 
 };
 
 function setTimeLapse(timeStampNow) {
 
-	deadline = timeStampNow.setMinutes(timeStampNow.getMinutes() + 1);
+	const deadline = timeStampNow.setMinutes(timeStampNow.getMinutes() + 1);
 
-	setInterval(countdown, 1000);
+	setInterval(countdown, 1000, deadline, document.getElementById('countdown'));
 };
 
 
-function checkFormat(item) {
+function toClockFormat(item) {
 
 	item = item.toString();
 

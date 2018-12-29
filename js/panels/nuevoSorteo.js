@@ -6,7 +6,7 @@ if (!opener) {
 (function(window, document, opener){
 
   //Disable raffle for 1 hour
-  opener.disableRaffle(new Date());
+  opener.setRaffleStatus(true, new Date());
 
   //Set Numbers Options
   const buttons   = document.getElementsByClassName('js-contest-options');

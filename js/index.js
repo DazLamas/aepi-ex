@@ -6,19 +6,12 @@ var objPartida = {
     parque: [],
 }, celdaItem;
 
-function disableRaffle(timeStampNow) {
-
-  document.getElementById('nuevoSorteo').disabled = true;
-  setTimeLapse(timeStampNow);
-
-};
-
 // Ejecución panel nueva partida
 nuevaPartida.onclick = () => {
 
     if (!objPartida.iniciada) {
 
-        open("paneles/nuevapartida.html", 'Nueva partida', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
+        open("html/modals/nuevapartida.html", 'Nueva partida', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
     } else {
 
@@ -48,7 +41,7 @@ for (let elm of celdas) {
 
             } else {
                 celdaItem = elm;
-                open('paneles/nuevoEdificio.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
+                open('html/modals/nuevoEdificio.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
             }
         }
     }
@@ -58,20 +51,18 @@ for (let elm of celdas) {
 //Ejecución panel recaudación
 recaudarCaja.onclick = () => {
 
-    if (!objPartida.iniciada) {
+    if (!objPartida.iniciada || objPartida.recaudacion < 200) {
 
-        msg('error', 'Inicia una partida para acceder a la recaudación.');
+      const errorText = !objPartida.iniciada ?
+                        'No has iniciado ninguna partida!' :
+                        'Tienes ' + objPartida.recaudacion + '$ en caja. Necesitas un mínimo de 200$.';
+
+      msg('error', errorText);
 
     } else {
 
-        if (objPartida.recaudacion < 200) {
+        open("html/modals/recaudarEntradas.html", 'Recaudar', 'scrollbars=yes,width=700,height=300,toolbar=yes');
 
-            msg('error', 'Tienes ' + objPartida.recaudacion + '$ en caja. Necesitas un mínimo de 200$.');
-
-        } else {
-
-            open("paneles/recaudarEntradas.html", 'Recaudar', 'scrollbars=yes,width=700,height=300,toolbar=yes');
-        }
     }
 }
 
@@ -79,14 +70,14 @@ nuevoSorteo.onclick = () => {
 
     if (objPartida.iniciada && objPartida.parque.length > 1) {
 
-        open("paneles/nuevoSorteo.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
+        open("html/modals/nuevoSorteo.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
     }
 
     else {
 
       const errorText = !objPartida.iniciada ?
-                        'Inicia partida para poder acceder al Sorteo' :
+                        'Inicia partida para poder acceder al sorteo' :
                         'Necesitas dos edificios construidos para acceder al sorteo';
 
       msg('error', errorText);
@@ -133,3 +124,14 @@ setInterval( () => {
 
 
 }, 1000);
+
+function setRaffleStatus(status, timeStampNow) {
+
+  document.getElementById('nuevoSorteo').disabled = status;
+  document.getElementById("countdown").innerHTML = "";
+
+  if(timeStampNow) {
+    setTimeLapse(timeStampNow);
+  };
+
+};
