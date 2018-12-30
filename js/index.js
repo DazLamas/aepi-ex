@@ -124,14 +124,3 @@ setInterval( () => {
 
 
 }, 1000);
-
-function setRaffleStatus(status, timeStampNow) {
-
-  document.getElementById('nuevoSorteo').disabled = status;
-  document.getElementById("countdown").innerHTML = "";
-
-  if(timeStampNow) {
-    setCountdownTimelapse(timeStampNow);
-  };
-
-};
