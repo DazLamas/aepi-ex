@@ -202,7 +202,7 @@ p {
 }
 
 
-.mapa > div[data-id-celda] {
+.mapa > div[data-id-cell] {
   border-top: 1px dashed rgba(0,0,0,.3);
   border-left: 1px dashed rgba(0,0,0,.3);
   border-bottom: 1px dashed rgba(0,0,0,.3);
@@ -214,16 +214,16 @@ p {
   cursor: pointer;
 }
 
-.mapa > div[data-id-celda]:hover {
+.mapa > div[data-id-cell]:hover {
   transform: scale(1.05);
   background-color: rgba(255,255,255,.3)
 }
 
-div[data-id-celda="01"],div[data-id-celda="03"],div[data-id-celda="04"],div[data-id-celda="05"],div[data-id-celda="06"] {
+div[data-id-cell="01"],div[data-id-cell="03"],div[data-id-cell="04"],div[data-id-cell="05"],div[data-id-cell="06"] {
   border-bottom: 1px dashed transparent !important
 }
 
-div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data-id-celda="08"],div[data-id-celda="09"],div[data-id-celda="10"],div[data-id-celda="11"]{
+div[data-id-cell="02"],div[data-id-cell="03"],div[data-id-cell="06"],div[data-id-cell="08"],div[data-id-cell="09"],div[data-id-cell="10"],div[data-id-cell="11"]{
   border-right: 1px dashed transparent !important
 }
 

@@ -1,7 +1,7 @@
 var game = {
     iniciada: false,
     balance: 3000,
-    recaudacion: 0,
+    ticketsGather: 0,
     visitors: 0,
     buildings: [],
 }, cellDomElement;
@@ -23,9 +23,9 @@ nuevaPartida.onclick = () => {
 
 
 // Ejecución panel construcción
-const celdas = document.getElementsByClassName('celda');
+const cells = document.getElementsByClassName('cell');
 
-for (let elm of celdas) {
+for (let elm of cells) {
 
     elm.onclick = () => {
 
@@ -37,7 +37,7 @@ for (let elm of celdas) {
 
             if (elm.dataset.cellContent != 'empty') {
 
-                msg('error', 'Elige una celda vacía para construir.');
+                msg('error', 'Elige una cell vacía para construir.');
 
             } else {
                 cellDomElement = elm;
@@ -51,17 +51,17 @@ for (let elm of celdas) {
 //Ejecución panel recaudación
 recaudarCaja.onclick = () => {
 
-    if (!game.iniciada || game.recaudacion < 200) {
+    if (!game.iniciada || game.ticketsGather < 200) {
 
       const errorText = !game.iniciada ?
                         'No has iniciado ninguna partida!' :
-                        'Tienes ' + game.recaudacion + '$ en caja. Necesitas un mínimo de 200$.';
+                        'Tienes ' + game.ticketsGather + '$ en caja. Necesitas un mínimo de 200$.';
 
       msg('error', errorText);
 
     } else {
 
-        open("html/modals/recaudarEntradas.html", 'Recaudar', 'scrollbars=yes,width=700,height=300,toolbar=yes');
+        open("html/modals/collect-tickets-gather", 'Recaudar', 'scrollbars=yes,width=700,height=300,toolbar=yes');
 
     }
 }
@@ -92,7 +92,7 @@ setInterval( () => {
     // Actualización estadísticas panel
     document.getElementById('contadorEdificios').textContent = game.buildings.length + " edificios";
 
-    document.getElementById('contadorRecaudacion').textContent = game.recaudacion + " $ en caja";
+    document.getElementById('contadorRecaudacion').textContent = game.ticketsGather + " $ en caja";
 
 
 
@@ -107,7 +107,7 @@ setInterval( () => {
 
         if(edificio.type === 'amusement') {
           game.visitors += edificio.visitors;
-          game.recaudacion += (edificio.visitors * 0.5);
+          game.ticketsGather += (edificio.visitors * 0.5);
         }
 
         if(edificio.type === 'stand' && game.visitors != 0) {
