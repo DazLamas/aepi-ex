@@ -41,7 +41,7 @@ for (let elm of celdas) {
 
             } else {
                 cellDomElement = elm;
-                open('html/modals/nuevoEdificio.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
+                open('html/modals/new-building.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
             }
         }
     }
