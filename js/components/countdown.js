@@ -2,7 +2,11 @@
  * Countdown
  */
 
-function countdown(deadline, output) {
+// ToDo: Text as default in HTML, reveal it at previous function. Something like: setCountdownPropUp();
+let deadline;
+const output = document.getElementById('countdown');
+
+function countdown(callback) {
 
 	let hours;
 	let minutes;
@@ -13,8 +17,8 @@ function countdown(deadline, output) {
 
 	if (lapse < 0) {
 
-		clearInterval(countdown);
-		setRaffleStatus(false, null);
+		clearInterval(this);
+		callback();
 
 	} else {
 
@@ -29,9 +33,11 @@ function countdown(deadline, output) {
 
 function setCountdownTimelapse(timeStampNow) {
 
-	const deadline = timeStampNow.setMinutes(timeStampNow.getMinutes() + 1);
+	deadline = timeStampNow.setSeconds(timeStampNow.getSeconds() + 5);
 
-	setInterval(countdown, 1000, deadline, document.getElementById('countdown'));
+	setInterval(countdown, 1000, function() {
+		setRaffleStatus(false);
+	});
 };
 
 
