@@ -6,6 +6,16 @@
 let deadline;
 const output = document.getElementById('countdown');
 
+function toClockFormat(item) {
+
+	item = item.toString();
+
+	if(item.length < 2) {
+		item = '0' + item;
+	}
+	return item;
+};
+
 function countdown(callback) {
 
 	let hours;
@@ -29,24 +39,4 @@ function countdown(callback) {
 		output.innerHTML = "Sorteo disponible en: <br>" + toClockFormat(hours) + ":" + toClockFormat(minutes) + ":" + toClockFormat(seconds);
 	}
 
-};
-
-function setCountdownTimelapse(timeStampNow) {
-
-	deadline = timeStampNow.setSeconds(timeStampNow.getSeconds() + 5);
-
-	setInterval(countdown, 1000, function() {
-		setRaffleStatus(false);
-	});
-};
-
-
-function toClockFormat(item) {
-
-	item = item.toString();
-
-	if(item.length < 2) {
-		item = '0' + item;
-	}
-	return item;
 };
