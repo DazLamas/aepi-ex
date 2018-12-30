@@ -238,32 +238,32 @@ div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data
   background-repeat: no-repeat;
 }
 
-.mapa > div[data-edificio-celda="vacia"]::before {
-  background-image: url('../img/vacia.png');
+.mapa > div[data-cell-content="empty"]::before {
+  background-image: url('../img/empty.png');
   background-position: center;
 }
 
 
-.mapa > div[data-edificio-celda="noria"]::before {
+.mapa > div[data-cell-content="noria"]::before {
   background-image: url('../img/noria.png');
   background-position: center;
   height: 125%;
 }
 
 
-.mapa > div[data-edificio-celda="looping"]::before {
+.mapa > div[data-cell-content="looping"]::before {
   background-image: url('../img/looping.png');
   height: 125%;
   background-position: center;
 }
 
-.mapa > div[data-edificio-celda="troncos"]::before {
+.mapa > div[data-cell-content="troncos"]::before {
   background-image: url('../img/troncos.png');
   height: 125%;
   background-position: center;
 }
 
-.mapa > div[data-edificio-celda="rusa"]::before {
+.mapa > div[data-cell-content="rusa"]::before {
   background-image: url('../img/rusa.png');
   background-position: center;
   width: 140%;
@@ -273,7 +273,7 @@ div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data
 }
 
 
-.mapa > div[data-edificio-celda="cafe"]::before {
+.mapa > div[data-cell-content="cafe"]::before {
   background-image: url('../img/cafe.png');
   background-position: center;
   height: 140%;
@@ -283,7 +283,7 @@ div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data
 }
 
 
-.mapa > div[data-edificio-celda="hamburguesas"]::before {
+.mapa > div[data-cell-content="hamburguesas"]::before {
   background-image: url('../img/hamburguesas.png');
   background-position: center;
   height: 120%;
@@ -292,7 +292,7 @@ div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data
   bottom: -6px;
 }
 
-.mapa > div[data-edificio-celda="refrescos"]::before {
+.mapa > div[data-cell-content="refrescos"]::before {
   background-image: url('../img/refrescos.png');
   background-position: center;
   height: 140%;
@@ -302,7 +302,7 @@ div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data
 }
 
 
-.mapa > div[data-edificio-celda="asiatico"]::before {
+.mapa > div[data-cell-content="asiatico"]::before {
   background-image: url('../img/asiatico.png');
   background-position: center;
   height: 140%;
@@ -312,7 +312,7 @@ div[data-id-celda="02"],div[data-id-celda="03"],div[data-id-celda="06"],div[data
 }
 
 
-.mapa > div[data-edificio-celda="auditorio"]::before {
+.mapa > div[data-cell-content="auditorio"]::before {
   background-image: url('../img/auditorio.png');
   background-position: center;
   height: 140%;

@@ -6,7 +6,7 @@ class Building {
   };
 
   create() {
-    this._celda.dataset.edificioCelda = this._name;
+    this._celda.dataset.cellContent = this._name;
   }
 
   get type() {

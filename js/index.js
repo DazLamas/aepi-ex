@@ -35,7 +35,7 @@ for (let elm of celdas) {
 
         } else {
 
-            if (elm.dataset.edificioCelda != 'vacia') {
+            if (elm.dataset.cellContent != 'empty') {
 
                 msg('error', 'Elige una celda vacía para construir.');
 
@@ -70,7 +70,7 @@ nuevoSorteo.onclick = () => {
 
     if (game.iniciada && game.buildings.length > 1) {
 
-        open("html/modals/nuevoSorteo.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
+        open("html/modals/new-raffle.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
     }
 

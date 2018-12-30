@@ -27,7 +27,7 @@ if (!opener) {
     const buildingss = opener.game.buildings;
 
     for (var i = 0; i < 2; i++) {
-      buildingss[i].celda.dataset.edificioCelda = "vacia";
+      buildingss[i].celda.dataset.cellContent = "empty";
     }
 
     buildingss.splice(0, 2);
