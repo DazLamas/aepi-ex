@@ -2,7 +2,7 @@ function msg(arg1, arg2, arg3 = 3){
 
   var alerta = document.getElementById('alerta');
 
-  alerta.setAttribute('data-tipo', arg1);
+  alerta.setAttribute('data-type', arg1);
 
   alerta.textContent = arg2;
 

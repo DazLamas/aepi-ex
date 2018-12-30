@@ -6,11 +6,11 @@ if (!opener) {
 
 recaudar.onclick = () => {
 
-    opener.objPartida.saldo -= 200;
-    opener.objPartida.saldo += opener.objPartida.recaudacion;
-    opener.objPartida.recaudacion = 0;
+    opener.game.balance -= 200;
+    opener.game.balance += opener.game.recaudacion;
+    opener.game.recaudacion = 0;
 
-    opener.msg('success', 'Se ha transferido a tu saldo!')
+    opener.msg('success', 'Se ha transferido a tu balance!')
     window.close();
 
 }

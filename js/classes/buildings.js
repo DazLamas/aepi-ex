@@ -1,16 +1,16 @@
 class Building {
-  constructor(celda, nombre, tipo) {
+  constructor(celda, name, type) {
     this._celda  = celda;
-    this._nombre = nombre;
-    this._tipo   = tipo;
+    this._name = name;
+    this._type   = type;
   };
 
-  inicializar() {
-    this._celda.dataset.edificioCelda = this._nombre;
+  create() {
+    this._celda.dataset.edificioCelda = this._name;
   }
 
-  get tipo() {
-    return this._tipo;
+  get type() {
+    return this._type;
   }
 
   get celda() {
@@ -20,25 +20,25 @@ class Building {
 };
 
 export class Amusement extends Building {
-  constructor(celda, nombre, tipo, visitantes) {
-    super(celda, nombre, tipo)
-    this._visitantes = visitantes;
+  constructor(celda, name, type, visitors) {
+    super(celda, name, type)
+    this._visitors = visitors;
   };
 
-  get visitantes() {
-    return Number(this._visitantes);
+  get visitors() {
+    return Number(this._visitors);
   }
 
 };
 
 export class Stand extends Building {
-  constructor(celda, nombre, tipo, ingresos) {
-    super(celda, nombre, tipo)
-    this._ingresos = ingresos;
+  constructor(celda, name, type, income) {
+    super(celda, name, type)
+    this._income = income;
   };
 
-  get ingresos() {
-    return Number(this._ingresos);
+  get income() {
+    return Number(this._income);
   }
 
 };

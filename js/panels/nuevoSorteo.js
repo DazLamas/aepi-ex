@@ -19,18 +19,18 @@ if (!opener) {
   };
 
   function winnerNumber() {
-    opener.objPartida.saldo += 10000;
+    opener.game.balance += 10000;
   };
 
   function looserNumber() {
 
-    const parques = opener.objPartida.parque;
+    const buildingss = opener.game.buildings;
 
     for (var i = 0; i < 2; i++) {
-      parques[i].celda.dataset.edificioCelda = "vacia";
+      buildingss[i].celda.dataset.edificioCelda = "vacia";
     }
 
-    parques.splice(0, 2);
+    buildingss.splice(0, 2);
 
   };
 

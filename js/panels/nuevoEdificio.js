@@ -15,36 +15,36 @@ for (let item of buildings) {
 
 function build() {
 
-  if(opener.objPartida.saldo >= this.dataset.coste){
+  if(opener.game.balance >= this.dataset.price){
 
-    if(this.dataset.tipo === 'atraccion') {
+    if(this.dataset.type === 'amusement') {
 
-      const atraccion = new Amusement(opener.celdaItem, this.dataset.nombre, this.dataset.tipo, this.dataset.visitantes);
+      const amusement = new Amusement(opener.cellDomElement, this.dataset.name, this.dataset.type, this.dataset.visitors);
 
-      opener.objPartida.parque.push(atraccion);
+      opener.game.buildings.push(amusement);
 
-      atraccion.inicializar();
-
-    }
-
-    if(this.dataset.tipo === 'puesto'){
-
-      const puesto = new Stand(opener.celdaItem, this.dataset.nombre, this.dataset.tipo, this.dataset.ingresos);
-
-      opener.objPartida.parque.push(puesto);
-
-      puesto.inicializar();
+      amusement.create();
 
     }
 
-    opener.objPartida.saldo -= this.dataset.coste;
+    if(this.dataset.type === 'stand'){
+
+      const stand = new Stand(opener.cellDomElement, this.dataset.name, this.dataset.type, this.dataset.income);
+
+      opener.game.buildings.push(stand);
+
+      stand.create();
+
+    }
+
+    opener.game.balance -= this.dataset.price;
 
     window.close();
 
     opener.msg('success', 'Edificio creado');
 
   }else{
-    msg('error', `Saldo insuficiente (dispones de ${opener.objPartida.saldo}€)`)
+    msg('error', `Saldo insuficiente (dispones de ${opener.game.balance}€)`)
   }
 
 }

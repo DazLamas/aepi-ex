@@ -11,7 +11,7 @@ validarFormularioPartida.onclick = () => {
     with (document) {
 
         // almacenado valores
-        let nombreUsuario = getElementById("campoNombre").value;
+        let nameUsuario = getElementById("campoNombre").value;
 
         let pwd1 = getElementById("campoPwd1").value;
         let pwd2 = getElementById("campoPwd2").value;
@@ -46,7 +46,7 @@ validarFormularioPartida.onclick = () => {
 
 
     
-        if (nombreUsuario === null || pwd1 === null || pwd2 === null || emailUsuario === null || dniUsuario === null || nacimientoUsuario === null || pagoIndex === null || condiciones === null){
+        if (nameUsuario === null || pwd1 === null || pwd2 === null || emailUsuario === null || dniUsuario === null || nacimientoUsuario === null || pagoIndex === null || condiciones === null){
 
             alert("Error: no se envió la información");
             return false;
@@ -54,9 +54,9 @@ validarFormularioPartida.onclick = () => {
         } else {
 
 
-            if (nombreUsuario.length < 5 || nombreUsuario.includes(" ")){
+            if (nameUsuario.length < 5 || nameUsuario.includes(" ")){
 
-                textoErrores += "El nombre de usuario es de 6 carateres mínimo, sin espacios<br>";
+                textoErrores += "El name de usuario es de 6 carateres mínimo, sin espacios<br>";
             }
 
             if (pwd1.length < 7 || !/[a-z]/.test(pwd1) || !/[A-Z]/.test(pwd1) || !/[0-9]/.test(pwd1) ){
@@ -115,8 +115,8 @@ validarFormularioPartida.onclick = () => {
 
             else {
 
-                opener.objPartida.iniciada = true;
-                opener.document.getElementById('nombreUsuario').textContent = nombreUsuario;
+                opener.game.iniciada = true;
+                opener.document.getElementById('nameUsuario').textContent = nameUsuario;
                 opener.document.getElementById('fechaPartida').textContent = new Date().toLocaleString('es-ES');
 
                 opener.msg('success', 'Todos los datos son correctos, iniciando partida...');

@@ -444,7 +444,7 @@ input[type="radio"]{
   padding: 5px;
 }
 
-.nuevoEdificio [data-tipo="atraccion"]::before {
+.nuevoEdificio [data-type="amusement"]::before {
   content: "Atracción";
   width: 100%;
   text-align: center;
@@ -456,7 +456,7 @@ input[type="radio"]{
   font-size: 8px;
 }
 
-.nuevoEdificio [data-tipo="puesto"]::before {
+.nuevoEdificio [data-type="stand"]::before {
   content: "Puesto";
   width: 100%;
   text-align: center;
@@ -486,7 +486,7 @@ font-weight: 800
   position: relative;
 }
 
-.nuevoEdificio [data-tipo="atraccion"] span::after {
+.nuevoEdificio [data-type="amusement"] span::after {
   content: "";
   width: 11px;
   height: 16px;
@@ -496,7 +496,7 @@ font-weight: 800
   top: -2px;
 }
 
-.nuevoEdificio [data-tipo="puesto"] span::after {
+.nuevoEdificio [data-type="stand"] span::after {
   content: "";
   width: 15px;
   height: 16px;
@@ -538,15 +538,15 @@ font-weight: 800
     padding:20px 0;
 }
 
-#alerta[data-tipo="error"]{
+#alerta[data-type="error"]{
     background: #F78181;
 }
 
-#alerta[data-tipo="success"]{
+#alerta[data-type="success"]{
     background: #81F79F;
 }
 
-#alerta[data-tipo="warning"]{
+#alerta[data-type="warning"]{
     background: #D8F781;
 }
 
