@@ -115,7 +115,7 @@ validarFormularioPartida.onclick = () => {
 
             else {
 
-                opener.game.iniciada = true;
+                opener.game.init = true;
                 opener.document.getElementById('nameUsuario').textContent = nameUsuario;
                 opener.document.getElementById('fechaPartida').textContent = new Date().toLocaleString('es-ES');
 

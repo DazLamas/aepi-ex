@@ -1,5 +1,5 @@
 var game = {
-    iniciada: false,
+    init: false,
     balance: 3000,
     ticketsGather: 0,
     visitors: 0,
@@ -9,7 +9,7 @@ var game = {
 // Ejecución panel nueva partida
 nuevaPartida.onclick = () => {
 
-    if (!game.iniciada) {
+    if (!game.init) {
 
         open("html/modals/nuevapartida.html", 'Nueva partida', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
@@ -29,7 +29,7 @@ for (let elm of cells) {
 
     elm.onclick = () => {
 
-        if (!game.iniciada) {
+        if (!game.init) {
 
             msg('error', 'Inicia una partida para poder construir.');
 
@@ -51,9 +51,9 @@ for (let elm of cells) {
 //Ejecución panel recaudación
 recaudarCaja.onclick = () => {
 
-    if (!game.iniciada || game.ticketsGather < 200) {
+    if (!game.init || game.ticketsGather < 200) {
 
-      const errorText = !game.iniciada ?
+      const errorText = !game.init ?
                         'No has iniciado ninguna partida!' :
                         'Tienes ' + game.ticketsGather + '$ en caja. Necesitas un mínimo de 200$.';
 
@@ -68,7 +68,7 @@ recaudarCaja.onclick = () => {
 
 nuevoSorteo.onclick = () => {
 
-    if (game.iniciada && game.buildings.length > 1) {
+    if (game.init && game.buildings.length > 1) {
 
         open("html/modals/new-raffle.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
@@ -76,7 +76,7 @@ nuevoSorteo.onclick = () => {
 
     else {
 
-      const errorText = !game.iniciada ?
+      const errorText = !game.init ?
                         'Inicia partida para poder acceder al sorteo' :
                         'Necesitas dos edificios construidos para acceder al sorteo';
 
