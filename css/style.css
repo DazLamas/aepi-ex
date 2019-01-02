@@ -107,7 +107,7 @@ p {
   margin-top: 0
 }
 
-#contadorEdificios::before {
+#current-buildings-display::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -117,7 +117,7 @@ p {
   top: -2px;
 }
 
-#contadorRecaudacion::before {
+#tickets-gather-display::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -127,7 +127,7 @@ p {
   top: -2px;
 }
 
-#contadorVisitantes::before {
+#current-visitors-display::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -147,7 +147,7 @@ p {
   top: -2px;
 }
 
-#contadorSaldoActual {
+#current-balance-display {
   position: absolute;
   left: 3px;
   top: -6px;

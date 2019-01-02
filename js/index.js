@@ -6,11 +6,16 @@ var game = {
     buildings: [],
 }, cellDomElement;
 
-nuevaPartida.onclick = () => {
+const newGameBtn        = document.getElementById('js-new-game-btn');
+const newBuildingBtns   = document.getElementsByClassName('js-new-building-btn');
+const newRaffleBtn      = document.getElementById('js-new-raffle-btn');
+const collectTicketsBtn = document.getElementById('js-collect-tickets-btn');
+
+newGameBtn.onclick = () => {
 
     if (!game.init) {
 
-        open("html/modals/nuevapartida.html", 'Nueva partida', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
+        open("html/modals/new-game.html", 'Nueva partida', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
 
     } else {
 
@@ -19,34 +24,26 @@ nuevaPartida.onclick = () => {
     }
 }
 
+for (let btn of newBuildingBtns) {
 
-const cells = document.getElementsByClassName('cell');
+    btn.onclick = () => {
 
-for (let elm of cells) {
+        if (!game.init || btn.dataset.cellContent != 'empty') {
 
-    elm.onclick = () => {
+            const errorText = !game.init ?
+                              'Inicia una partida para poder construir.' :
+                              'Elige una celda vacía para construir.';
 
-        if (!game.init) {
-
-            msg('error', 'Inicia una partida para poder construir.');
+            msg('error', errorText);
 
         } else {
-
-            if (elm.dataset.cellContent != 'empty') {
-
-                msg('error', 'Elige una celda vacía para construir.');
-
-            } else {
-                cellDomElement = elm;
-                open('html/modals/new-building.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
-            }
+            cellDomElement = btn;
+            open('html/modals/new-building.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
         }
     }
 }
 
-
-//Ejecución panel recaudación
-recaudarCaja.onclick = () => {
+collectTicketsBtn.onclick = () => {
 
     if (!game.init || game.ticketsGather < 200) {
 
@@ -63,7 +60,7 @@ recaudarCaja.onclick = () => {
     }
 }
 
-nuevoSorteo.onclick = () => {
+newRaffleBtn.onclick = () => {
 
     if (game.init && game.buildings.length > 1) {
 

@@ -1,8 +1,8 @@
 setInterval( () => {
 
-    document.getElementById('contadorEdificios').textContent = game.buildings.length + " buildingss";
+    document.getElementById('current-buildings-display').textContent = game.buildings.length + " buildingss";
 
-    document.getElementById('contadorRecaudacion').textContent = game.ticketsGather + " $ en caja";
+    document.getElementById('tickets-gather-display').textContent = game.ticketsGather + " $ en caja";
 
 
 
@@ -25,9 +25,9 @@ setInterval( () => {
 
       }
 
-    document.getElementById('contadorVisitantes').textContent = game.visitors + " visitors";
+    document.getElementById('current-visitors-display').textContent = game.visitors + " visitors";
 
-    document.getElementById('contadorSaldoActual').textContent = game.balance + " $";
+    document.getElementById('current-balance-display').textContent = game.balance + " $";
 
 
 }, 1000);

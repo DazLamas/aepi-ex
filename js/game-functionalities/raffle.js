@@ -1,6 +1,6 @@
 function changeRaffleStatus(status, timeStampNow) {
 
-  document.getElementById('nuevoSorteo').disabled = status;
+  document.getElementById('js-new-raffle-btn').disabled = status;
   document.getElementById("countdown").innerHTML = "";
 
   //Set timelapse and start countdown

@@ -69,7 +69,7 @@ const modalContents = {
   <button id="validateForm">COMENZAR PARTIDA</button>
 
   <div id="flashMsgCont"></div>
-  <script src="js/panels/new-game.js"></script>`,
+  <script src="js/game-functionalities/new-game.js"></script>`,
   "new-raffle":  `<div class="panel sorteo">
 
     <h1>¡Bienvenido!</h1>
@@ -88,7 +88,7 @@ const modalContents = {
 
   <script src="../../js/utils.js"></script>
   <script src="../../js/components/messages-manager.js"></script>
-  <script src="../../js/panels/new-raffle.js"></script>
+  <script src="../../js/game-functionalities/new-raffle.js"></script>
 
 
 </div>`,
@@ -167,7 +167,7 @@ const modalContents = {
   <div id="flashMsgCont"></div>
 
   <script src="../../js/components/flash-message.js"></script>
-  <script type="module" src="../../js/panels/new-building.js"></script>
+  <script type="module" src="../../js/game-functionalities/new-building.js"></script>
 
 </div>`,
   "collect-tikets": `<div class="panel mercado">
@@ -180,7 +180,7 @@ const modalContents = {
 
   <div id="flashMsgCont"></div>
 
-  <script src="js/panels/collect-tickets-gather"></script>
+  <script src="js/game-functionalities/collect-tickets-gather"></script>
 
 </div>`
 };
