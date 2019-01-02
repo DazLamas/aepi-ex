@@ -37,7 +37,7 @@ for (let elm of cells) {
 
             if (elm.dataset.cellContent != 'empty') {
 
-                msg('error', 'Elige una cell vacía para construir.');
+                msg('error', 'Elige una celda vacía para construir.');
 
             } else {
                 cellDomElement = elm;

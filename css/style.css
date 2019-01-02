@@ -524,7 +524,7 @@ font-weight: 800
   width: 35%;
 }
 
-#alerta{
+#flashMsgCont{
     border-top: 1px solid grey;
     bottom: 0;
     font-weight: bold;
@@ -538,19 +538,19 @@ font-weight: 800
     padding:20px 0;
 }
 
-#alerta[data-type="error"]{
+#flashMsgCont[data-type="error"]{
     background: #F78181;
 }
 
-#alerta[data-type="success"]{
+#flashMsgCont[data-type="success"]{
     background: #81F79F;
 }
 
-#alerta[data-type="warning"]{
+#flashMsgCont[data-type="warning"]{
     background: #D8F781;
 }
 
-#alerta.activa{
+#flashMsgCont.activa{
     transform: translateY(0);
 }
 

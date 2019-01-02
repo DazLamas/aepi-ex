@@ -57,6 +57,6 @@ if (!opener) {
     button.addEventListener('click', checkNumber, false);
   };
 
-  console.log(`El premio se encuentra tras el número ${winner.id}, el terremoto tras el ${looser.id}`);
+  // console.log(`El premio se encuentra tras el número ${winner.id}, el terremoto tras el ${looser.id}`);
 
 }(window, document, opener));
