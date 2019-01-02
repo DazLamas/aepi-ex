@@ -24,25 +24,6 @@ newGameBtn.onclick = () => {
     }
 }
 
-for (let btn of newBuildingBtns) {
-
-    btn.onclick = () => {
-
-        if (!game.init || btn.dataset.cellContent != 'empty') {
-
-            const errorText = !game.init ?
-                              'Inicia una partida para poder construir.' :
-                              'Elige una celda vacía para construir.';
-
-            msg('error', errorText);
-
-        } else {
-            cellDomElement = btn;
-            open('html/modals/new-building.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
-        }
-    }
-}
-
 collectTicketsBtn.onclick = () => {
 
     if (!game.init || game.ticketsGather < 200) {
@@ -62,13 +43,7 @@ collectTicketsBtn.onclick = () => {
 
 newRaffleBtn.onclick = () => {
 
-    if (game.init && game.buildings.length > 1) {
-
-        open("html/modals/new-raffle.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
-
-    }
-
-    else {
+    if (!game.init || game.buildings.length < 2) {
 
       const errorText = !game.init ?
                         'Inicia partida para poder acceder al sorteo' :
@@ -77,4 +52,29 @@ newRaffleBtn.onclick = () => {
       msg('error', errorText);
 
     }
+
+    else {
+
+      open("html/modals/new-raffle.html", 'Sorteo', 'scrollbars=yes,width=700,height=1000,toolbar=yes');
+
+    }
 };
+
+for (let btn of newBuildingBtns) {
+
+    btn.onclick = () => {
+
+        if (!game.init || btn.dataset.cellContent != 'empty') {
+
+            const errorText = !game.init ?
+                              'Inicia una partida para poder construir.' :
+                              'Elige una celda vacía para construir.';
+
+            msg('error', errorText);
+
+        } else {
+            cellDomElement = btn;
+            open('html/modals/new-building.html', 'Construir', 'width=600,height=1200,scrollbars=yes,toolbar=no')
+        }
+    }
+}
