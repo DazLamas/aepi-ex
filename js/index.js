@@ -6,7 +6,6 @@ var game = {
     buildings: [],
 }, cellDomElement;
 
-// Ejecución panel nueva partida
 nuevaPartida.onclick = () => {
 
     if (!game.init) {
@@ -21,8 +20,6 @@ nuevaPartida.onclick = () => {
 }
 
 
-
-// Ejecución panel construcción
 const cells = document.getElementsByClassName('cell');
 
 for (let elm of cells) {
@@ -83,44 +80,4 @@ nuevoSorteo.onclick = () => {
       msg('error', errorText);
 
     }
-}
-
-
-// intervalo de actualización
-setInterval( () => {
-
-    // Actualización estadísticas panel
-    document.getElementById('contadorEdificios').textContent = game.buildings.length + " edificios";
-
-    document.getElementById('contadorRecaudacion').textContent = game.ticketsGather + " $ en caja";
-
-
-
-
-}, 100);
-
-
-// intervalo de actualización
-setInterval( () => {
-
-      for (edificio of game.buildings) {
-
-        if(edificio.type === 'amusement') {
-          game.visitors += edificio.visitors;
-          game.ticketsGather += (edificio.visitors * 0.5);
-        }
-
-        if(edificio.type === 'stand' && game.visitors != 0) {
-          game.balance += edificio.income;
-        }
-
-      }
-
-
-    // Actualización de visitors y balance panel
-    document.getElementById('contadorVisitantes').textContent = game.visitors + " visitors";
-
-    document.getElementById('contadorSaldoActual').textContent = game.balance + " $";
-
-
-}, 1000);
+};

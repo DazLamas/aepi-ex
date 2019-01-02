@@ -1,3 +1,9 @@
+if (!opener) {
+
+    alert("ERROR: Accede desde el panel principal.");
+    location.assign('../index.html');
+};
+
 const formSendBtn = document.getElementById('validateForm');
 
 function validateForm() {
