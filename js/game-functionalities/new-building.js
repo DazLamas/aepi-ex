@@ -5,13 +5,13 @@ if (!opener) {
 
     alert("ERROR: Accede desde el panel principal.");
     location.assign('../index.html');
-}
+};
 
 const buildings = document.getElementsByClassName('edificio');
 
 for (let item of buildings) {
     item.addEventListener('click', build, false);
-}
+};
 
 function build() {
 
@@ -47,4 +47,4 @@ function build() {
     msg('error', `Saldo insuficiente (dispones de ${opener.game.balance}€)`)
   }
 
-}
+};

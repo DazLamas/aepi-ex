@@ -1,15 +1,15 @@
+const newGameBtn        = document.getElementById('js-new-game-btn');
+const newBuildingBtns   = document.getElementsByClassName('js-new-building-btn');
+const newRaffleBtn      = document.getElementById('js-new-raffle-btn');
+const collectTicketsBtn = document.getElementById('js-collect-tickets-btn');
+var cellDomElement;
 var game = {
     init: false,
     balance: 3000,
     ticketsGather: 0,
     visitors: 0,
     buildings: [],
-}, cellDomElement;
-
-const newGameBtn        = document.getElementById('js-new-game-btn');
-const newBuildingBtns   = document.getElementsByClassName('js-new-building-btn');
-const newRaffleBtn      = document.getElementById('js-new-raffle-btn');
-const collectTicketsBtn = document.getElementById('js-collect-tickets-btn');
+};
 
 newGameBtn.onclick = () => {
 

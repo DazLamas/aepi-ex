@@ -9,7 +9,7 @@
     <body class="panel">
 		</div>
 
-		<form action="gestordedatos.php" method="POST">
+		<form id="newGameForm" action="gestordedatos.php" method="POST" class="validateThis">
 
 			<fieldset>
 
@@ -19,44 +19,44 @@
 				<br>
 
 				<label>Nombre de usuario
-					<input type="text" id="campoNombre" value="GERMAN">
+					<input class="js-validation" value="SarahDL" data-validations="required lenght noSpace" data-val-lenght="6" data-val-lenght="6" type="text" id="userName">
 				</label>
 				<br><br>
 
 				<label>Contraseña
-					<input type="password" id="campoPwd1" value="Qwerty1">
+					<input class="js-validation" value="Querty123" data-validations="required lenght hasUppercase hasLowercase hasNumber equalField" data-val-lenght="6" type="password" id="userPassword1">
 				</label>
 				<br><br>
 
 				<label>Repite la contraseña
-					<input type="password" id="campoPwd2" value="Qwerty1">
+					<input class="js-validation" value="Querty123" data-validations="required equalField" type="password" id="userPassword2">
 				</label>
 				<br><br>
 
 				<label>Email
-					<input type="text" id="campoEmail" value="hsgusg@msn.es">
+					<input class="js-validation" value="sarah@gmail.com" data-validations="required hasDot hasArroba" type="text" id="userEmail">
 				</label>
 				<br><br>
 
 				<label>DNI
-					<input type="text" id="campoDNI" value="53500000L">
+					<input class="js-validation" value="32716362N" data-validations="required id" type="text" id="userID">
 				</label>
 				<br><br>
 
 				<label>Fecha de nacimiento
-					<input type="text" id="campoFecha" value="23/05/1986">
+					<input class="js-validation" value="1986-05-23" data-validations="required"  id="userDate" type="date">
 				</label>
 				<br><br>
 
 				País de residencia
-					<label><input type="radio" name="pais" value="ES" checked>España</label>
-					<label><input type="radio" name="pais" value="MX">Mexico</label>
-					<label><input type="radio" name="pais" value="AR">Argentina</label>
-					<label><input type="radio" name="pais" value="XX">Otro</label>
+					<label><input class="js-validation" data-validations="required" type="radio" name="userCountry" value="ES" checked>España</label>
+					<label><input class="js-validation" data-validations="required" type="radio" name="userCountry" value="MX">Mexico</label>
+					<label><input class="js-validation" data-validations="required" type="radio" name="userCountry" value="AR">Argentina</label>
+					<label><input class="js-validation" data-validations="required" type="radio" name="userCountry" value="XX">Otro</label>
 				<br>
 
 				<label>Forma de pago preferente
-					<select id="listaPago">
+					<select id="paymentMethod" class="js-validation" data-validations="required">
 						<option>Seleccionar</option>
 						<option selected>Paypal</option>
 						<option>Tarjeta de crédito</option>
@@ -66,21 +66,21 @@
 				<br><br>
 
 				<small>
-					<input type="checkbox" id="checkCondiciones" checked> Acepto las condiciones del servicio
+					<input class="js-validation" data-validations="required" type="checkbox" id="acceptsConditions" class="js-validation" data-validations="required" checked> Acepto las condiciones del servicio
 				</small>
 				<br><br>
 
 			</fieldset>
 
-			<div id="errores"></div>
+			<button id="sendForm" data-validate="parent">COMENZAR PARTIDA</button>
 
 		</form>
 
-		<button id="validateForm">COMENZAR PARTIDA</button>
-
+		<div id="errores"></div>
 		<div id="flashMsgCont"></div>
 
 		<script src="../../js/utils.js"></script>
+		<script src="../../js/components/flash-message.js"></script>
 		<script src="../../js/game-functionalities/new-game.js"></script>
 
 	</body>

@@ -1,6 +1,6 @@
 function msg(arg1, arg2, arg3 = 3){
 
-  var flashMsgCont = document.getElementById('flashMsgCont');
+  const flashMsgCont = document.getElementById('flashMsgCont');
 
   flashMsgCont.setAttribute('data-type', arg1);
 

@@ -1,4 +1,4 @@
-const contestResult = {
+const raffleResult = {
            empty : {
               type: 'warning',
               text: 'Ni premio, ni terremoto!! Vuelve a intentarlo en una hora'

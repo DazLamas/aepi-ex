@@ -1,6 +1,6 @@
 setInterval( () => {
 
-    document.getElementById('current-buildings-display').textContent = game.buildings.length + " buildingss";
+    document.getElementById('current-buildings-display').textContent = game.buildings.length + " buildings";
 
     document.getElementById('tickets-gather-display').textContent = game.ticketsGather + " $ en caja";
 

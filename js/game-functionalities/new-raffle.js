@@ -1,6 +1,5 @@
 if (!opener) {
     alert("ERROR: Sorteo no disponible.");
-    window.close();
 };
 
 (function(window, document, opener){
@@ -24,13 +23,13 @@ if (!opener) {
 
   function looserNumber() {
 
-    const buildingss = opener.game.buildings;
+    const buildings = opener.game.buildings;
 
     for (var i = 0; i < 2; i++) {
-      buildingss[i].cell.dataset.cellContent = "empty";
+      buildings[i].cell.dataset.cellContent = "empty";
     }
 
-    buildingss.splice(0, 2);
+    buildings.splice(0, 2);
 
   };
 
@@ -48,7 +47,7 @@ if (!opener) {
       choosenOpt = 'looser';
     }
 
-    opener.msg(contestResult[choosenOpt].type, contestResult[choosenOpt].text);
+    opener.msg(raffleResult[choosenOpt].type, raffleResult[choosenOpt].text);
     window.close();
 
   };
@@ -57,6 +56,6 @@ if (!opener) {
     button.addEventListener('click', checkNumber, false);
   };
 
-  // console.log(`El premio se encuentra tras el número ${winner.id}, el terremoto tras el ${looser.id}`);
+  console.log(`El premio se encuentra tras el número ${winner.id}, el terremoto tras el ${looser.id}`);
 
 }(window, document, opener));

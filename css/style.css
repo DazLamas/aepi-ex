@@ -420,10 +420,10 @@ input[type="radio"]{
 }
 
 #errores{
-  background-color: red;
-  color: white;
+  color: black;
   font-weight: bold;
   text-align: center;
+  line-height: 20px;
 }
 
 #mensajes,#textoResultado{
