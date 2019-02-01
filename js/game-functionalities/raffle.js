@@ -12,7 +12,7 @@ function changeRaffleStatus(status, timeStampNow) {
 
 function setCountdownTimelapse(timeStampNow) {
 
-	deadline = timeStampNow.setSeconds(timeStampNow.getSeconds() + 5);
+	deadline = timeStampNow.setMinutes(timeStampNow.getMinutes() + 1);
 
   //Start countdown
 	setInterval(countdown, 1000, function() {

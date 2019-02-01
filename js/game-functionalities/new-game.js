@@ -42,19 +42,36 @@ function resetValidations() {
 
 function validateForm() {
 
-  formValidationsCounter = validateUserName()           ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validatePassword()           ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validatePasswordRelated()    ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validateEmail()              ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validateId()                 ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validateDate()               ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validateCountry()            ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validatePaymentMethod()      ?  (formValidationsCounter + 1) : formValidationsCounter;
-  formValidationsCounter = validateConditionsAccepted() ?  (formValidationsCounter + 1) : formValidationsCounter;
+  const actions = [validateUserName, validatePassword, validatePasswordRelated,
+  validateEmail, validateId, validateDate, validateCountry, validatePaymentMethod,
+  validateConditionsAccepted];
+
+
+  const formValidationsCounter = actions.reduce( (total, action) => {
+    return total + Number(action());
+  }, 0);
+
+
+
+  // const capitalizeFirstLetter = (string) => {
+  //   return string.charAt(0).toUpperCase()
+  // }
+  // const addDot = (string) => {
+  //   return string+'.'
+  // }
+  //
+  // const a = [capitalizeFirstLetter, addDot].reduce((result, func) => {
+  //   return func(result)
+  // }, 'sarah');
+  //
+  // console.log(a);
+
+
 
   return fieldToValidate === formValidationsCounter;
 
-}
+
+};
 
 
 function validateUserName() {
