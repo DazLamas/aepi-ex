@@ -6,9 +6,6 @@ if (!opener) {
 
 const newGameForm = document.getElementById('newGameForm');
 
-const fieldToValidate       = 9;
-let formValidationsCounter  = 0;
-
 let errors = new Set([]);
 
 function validateBeforeSend(e) {
@@ -36,214 +33,140 @@ function validateBeforeSend(e) {
 
 function resetValidations() {
   removeErrors(document.getElementById('errores'));
-  formValidationsCounter = 0;
   errors = new Set([]);
 }
 
 function validateForm() {
 
-  const actions = [validateUserName, validatePassword, validatePasswordRelated,
-  validateEmail, validateId, validateDate, validateCountry, validatePaymentMethod,
-  validateConditionsAccepted];
+  const fields = [
+    { ids: ['userName'],          validator: validateUserName },
+    { ids: ['userPassword1'],     validator: validatePassword },
+    { ids: ['userEmail'],         validator: validateEmail },
+    { ids: ['userID'],            validator: validateId },
+    { ids: ['userDate'],          validator: validateDate },
+    { ids: ['paymentMethod'],     validator: validatePaymentMethod },
+    { ids: ['userPassword1', 'userPassword2'], validator: validatePasswordRelated },
+    { validator: validateCountry },
+    { validator: validateConditionsAccepted },
+  ]
 
-
-  const formValidationsCounter = actions.reduce( (total, action) => {
-    return total + Number(action());
-  }, 0);
-
-
-
-  // const capitalizeFirstLetter = (string) => {
-  //   return string.charAt(0).toUpperCase()
-  // }
-  // const addDot = (string) => {
-  //   return string+'.'
-  // }
-  //
-  // const a = [capitalizeFirstLetter, addDot].reduce((result, func) => {
-  //   return func(result)
-  // }, 'sarah');
-  //
-  // console.log(a);
-
-
-
-  return fieldToValidate === formValidationsCounter;
-
-
+  try {
+    for(field of fields) {
+      let fieldValues;
+      if(field.ids) {
+        fieldValues = field.ids.map(x => document.getElementById(x).value);
+      };
+      try {
+        fieldValues ? field.validator(...fieldValues) : field.validator();
+      }
+      catch (e) {
+        throw errors = errors.add(e);
+      }
+    }
+  }
+  catch (e) { return false }
+  return true
 };
 
 
-function validateUserName() {
+function validateUserName(userName) {
 
-  const numberOfValidations = 2;
-  let validationsCounter    = 0;
-
-  const inputValue = document.getElementById('userName').value;
-
-  if(inputValue.length >= 6) {
-    validationsCounter++;
-  }else{
-    errors = errors.add('Tu nombre de usuario tiene menos de 6 caracteres');
-  }
-
-  if(!/\s/.test(inputValue)) {
-    validationsCounter++;
-  }else{
-    errors = errors.add('Tu nombre de usuario no puede contener espacios');
-  }
-
-  return numberOfValidations === validationsCounter;
-
-}
-
-function validatePassword() {
-
-  const numberOfValidations = 4;
-  let validationsCounter    = 0;
-
-  const inputValue = document.getElementById('userPassword1').value;
-
-  if(inputValue.length >= 6) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('Tu contraseña no debe ser menor de 6');
-  }
-
-  if(/[A-Z]/.test(inputValue)) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('Tu contraseña debe contener al menos una mayúscula');
-  }
-
-  if(/[a-z]/.test(inputValue)) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('Tu contraseña debe contener al menos una minúscula');
-  }
-
-  if(/[0-9]/.test(inputValue)) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('Tu contraseña debe contener al menos un número');
-  }
-
-  return numberOfValidations === validationsCounter;
-
-}
-
-function validatePasswordRelated() {
-
-  const numberOfValidations = 1;
-  let validationsCounter    = 0;
-
-  const inputValue = document.getElementById('userPassword2').value;
-
-  if(inputValue ===  document.getElementById('userPassword1').value) {
-    validationsCounter++;
-  }else{
-    errors = errors.add('Las contraseñas no coinciden');
-  }
-
-  return numberOfValidations === validationsCounter;
-
-}
-
-function validateEmail(){
-
-  const numberOfValidations = 2;
-  let validationsCounter    = 0;
-
-  const inputValue = document.getElementById('userEmail').value;
-
-  if(/@/.test(inputValue)) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('El e-mail introducido no es válido, debe contener una arroba');
-  }
-
-  if(/\./.test(inputValue)) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('El e-mail introducido no es válido, debe contener un punto');
-  }
-
-  return numberOfValidations === validationsCounter;
-
-}
-
-function validateId() {
-
-  const numberOfValidations = 1;
-  let validationsCounter    = 0;
-
-  const inputValue = document.getElementById('userID').value;
-
-  if(/^[0-9]{8,8}[A-Za-z]$/.test(inputValue)) {
-    validationsCounter++;
-  } else {
-    errors = errors.add('DNI no es válido');
-  }
-
-  return numberOfValidations === validationsCounter;
-
-}
-
-function validateDate() {
-
-  const numberOfValidations = 1;
-  let validationsCounter    = 0;
-
-  const inputValue = document.getElementById('userDate').value;
-
-  if(getAge(inputValue) >= 18){
-    validationsCounter++;
-  }else {
-    errors = errors.add('Solo para mayores de edad');
+  const hasNoBlankSpaces = (userName) => {
+    if(/\s/.test(userName)) throw 'no puede contener espacios';
+  };
+  const hasMinLength = (userName) => {
+    if(userName.length <= 6) throw 'debe tener 6 o más caracteres';
   };
 
-  return numberOfValidations === validationsCounter;
-
+  try {
+    hasNoBlankSpaces(userName);
+    hasMinLength(userName);
+  }
+  catch(e) {
+    throw "Tu nombre de usuario " + e;
+  }
 }
 
-function validateCountry() {
+function validatePassword(userPassword1) {
 
-  const numberOfValidations = 1;
-  let validationsCounter    = 0;
+  const hasMinLength = () => {
+    if(userPassword1.length <= 6) throw '6 caracteres';
+  };
+  const hasCapitalizedChar = () => {
+    if(!/[A-Z]/.test(userPassword1)) throw 'una mayúscula';
+  };
+  const hasLowerCasedChar = () => {
+    if(!/[a-z]/.test(userPassword1)) throw 'una minúscula';
+  };
+  const hasNumber = () => {
+    if(!/[0-9]/.test(userPassword1)) throw 'un número';
+  };
+
+  try {
+    hasMinLength();
+    hasCapitalizedChar();
+    hasLowerCasedChar();
+    hasNumber();
+  }
+  catch(e) {
+    throw "Tu contraseña debe contener al menos " + e;
+  }
+}
+
+function validatePasswordRelated(userPassword1, userPassword2) {
+
+  const isSamePassword = userPassword1 === userPassword2;
+  if(!isSamePassword) throw 'Las contraseñas no coinciden';
+}
+
+function validateEmail(userEmail) {
+
+  const containsAt = () => {
+    if(!/@/.test(userEmail)) throw 'debe contener una arroba';
+  };
+  const containstDot = () => {
+    if(!/\./.test(userEmail)) throw 'debe contener un punto'
+  };
+
+  try {
+    containsAt();
+    containstDot();
+  }
+  catch (e) {
+    throw "El e-mail introducido no es válido, " + e
+  }
+}
+
+function validateId(userID) {
+
+  const validIdCard = /^[0-9]{8,8}[A-Za-z]$/.test(userID);
+  if(!validIdCard) throw 'DNI no es válido';
+}
+
+function validateDate(userDate) {
+
+  const validAge = getAge(userDate) >= 18;
+  if(!validAge) throw 'Solo para mayores de edad';
+}
+
+function validateCountry(userCountry) {
 
   const radioBtnGroup = document.forms['newGameForm'].elements['userCountry'];
 
-  for (var i = 0; i < radioBtnGroup.length; i++) {
-
-    if(radioBtnGroup[i].checked) {
-      validationsCounter++;
-      errors.delete('Debes marcar algún país');
-      break
-    }
-    errors = errors.add('Debes marcar algún país');
-  }
-
-
-  return numberOfValidations === validationsCounter;
-
+  for (let country of radioBtnGroup) if(country.checked) return true;
+  throw 'Debe marcar algún país'
 }
 
-function validatePaymentMethod() {
-
-  const numberOfValidations = 1;
-  let validationsCounter    = 0;
-
-  const select = document.forms['newGameForm'].elements['paymentMethod'];
-
-  if(select.selectedIndex != 0) {
-    validationsCounter++;
-  }else{
-    errors = errors.add('Debes marcar algún método de pago');
-  };
-
-  return numberOfValidations === validationsCounter;
-
+function validatePaymentMethod(paymentMethod) {
+  if(paymentMethod === 'Seleccionar') throw 'Debes marcar algún método de pago';
 }
+
+
+function validateConditionsAccepted() {
+  const checkbox = document.forms['newGameForm'].elements['acceptsConditions'];
+  if(!checkbox.checked) throw 'Debes aceptar las condiciones del servicio';
+}
+
 
 function getAge(dateInputValue) {
 
@@ -253,27 +176,9 @@ function getAge(dateInputValue) {
   let age = today.getFullYear() - userBirthday.getFullYear();
   const month = today.getMonth() - userBirthday.getMonth();
   if (month < 0 || (month === 0 && today.getDate() < userBirthday.getDate())) {
-      age--;
+    age--;
   }
   return age;
 };
-
-function validateConditionsAccepted() {
-
-  const numberOfValidations = 1;
-  let validationsCounter    = 0;
-
-  const checkbox = document.forms['newGameForm'].elements['acceptsConditions'];
-
-  if(checkbox.checked) {
-    validationsCounter++;
-  }else{
-    errors = errors.add('Debes aceptar las condiciones del servicio');
-  };
-
-  return numberOfValidations === validationsCounter;
-
-}
-
 
 newGameForm.addEventListener('submit', validateBeforeSend, true);
